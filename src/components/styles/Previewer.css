@@ -4,4 +4,70 @@
     padding: 1em;
     border: solid 1px #DDD;
     border-radius: 10px;
+    overflow: scroll;
+}
+
+.TextPreview__container h1 {
+    font-size: 2em;
+    border-bottom: solid 2px #000;
+    margin-bottom: 0.5em;
+}
+
+.TextPreview__container h2 {
+    font-size: 1.5em;
+    border-bottom: solid 1px #000;
+    margin-bottom: 0.5em;
+}
+
+.TextPreview__container h3 {
+    font-size: 1.3em;
+    margin-bottom: 0.5em;
+}
+
+.TextPreview__container p {
+    margin-bottom: 0.4em;
+}
+
+.TextPreview__container p code {
+    font-family: monospace;
+    background-color: #DDD;
+}
+
+.TextPreview__container pre code {
+    background-color: #DDD;
+}
+
+.TextPreview__container pre {
+    background-color: #DDD;
+    margin-bottom: 0.5em;
+}
+
+.TextPreview__container pre code {
+    font-family: monospace;
+    margin-bottom: 0.5em;
+}
+
+.TextPreview__container blockquote {
+    margin-left: 2em;
+    margin-bottom: 0.5em;
+    padding-left: 0.5em;
+    border-left: solid 3px #AAA;
+}
+
+.TextPreview__container table {
+    border-collapse: collapse;
+    margin-bottom: 0.5em;
+}
+
+.TextPreview__container table, th, td {
+    border: 1px solid black;
+    padding: 0.3em;
+  }
+
+.TextPreview__container ul {
+    padding-left: 2em;
+}
+
+.TextPreview__container img {
+    width: 100%;
 }

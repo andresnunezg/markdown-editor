@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { initialContent } from './data';
 import Editor from './components/Editor';
 import Previewer from './components/Previewer';
 
@@ -8,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      textMarkdown: '',
+      textMarkdown: initialContent,
     };
   }
   handleChangeEditor = (e) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PencilAltIcon } from '@heroicons/react/outline';
+import { PencilAltIcon, ClipboardCopyIcon, TrashIcon } from '@heroicons/react/outline';
 import { CodeIcon, DotsVerticalIcon, LinkIcon, TableIcon, ChatAltIcon, PhotographIcon} from '@heroicons/react/outline';
 import './styles/Editor.css';
 
@@ -8,9 +8,21 @@ class Editor extends React.Component {
     render () {
         return (
             <section id="editor">
-                <div className="Title__container">
-                    <PencilAltIcon className="Icon__title" />
-                    <h1>Editor</h1>
+                <div className="Title__container TitleEdit">
+                    <div className="TitleEditor__left">
+                        <PencilAltIcon className="Icon__title" />
+                        <h1>Editor</h1>
+                    </div>
+                    <div className="TitleEditor__right">
+                        <div className="TitleEditor__action">
+                            <p>Copiar</p>
+                            <ClipboardCopyIcon className="Icontool" />
+                        </div>
+                        <div className="TitleEditor__action">
+                            <p>Borrar</p>
+                            <TrashIcon className="Icontool" />
+                        </div>
+                    </div>
                 </div>
                 <div className="Textedit__container">
                     <div className="Textedit__toolbar">
