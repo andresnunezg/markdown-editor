@@ -1,0 +1,7 @@
+.TextPreview__container {
+    height: 100%;
+    margin: 1em;
+    padding: 1em;
+    border: solid 1px #DDD;
+    border-radius: 10px;
+}
