@@ -14,9 +14,17 @@ class Previewer extends React.Component {
     render () {
         return (
             <section id="previewer">
-                <div className="Title__container">
-                    <DocumentTextIcon className="Icon__title" />
-                    <h1>Vista previa</h1>
+                <div className="Title__container TitlePreviewer">
+                    <div className="TitlePreviewer__left">
+                        <DocumentTextIcon className="Icon__title" />
+                        <h1>Vista previa</h1>
+                    </div>
+                    <div className="TitlePreviewer__right">
+                        <button onClick={this.props.handleClick} id="download" type="button" className="TitlePreviewer__action-download">
+                            Descargar&nbsp;
+                            <i className="fas fa-download"></i>
+                        </button>
+                    </div>
                 </div>
                 <div className="TextPreview__container" dangerouslySetInnerHTML={this.markdownConvert()} />
             </section>

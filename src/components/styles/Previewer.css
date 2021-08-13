@@ -1,3 +1,25 @@
+.TitlePreviewer,
+.TitlePreviewer__left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.TitlePreviewer__action-download {
+    border-style: none;
+    height: 100%;
+    margin-left: 1em;
+    padding: 0.5em;
+    border-radius: 5px;
+    transition: 200ms ease;
+    background: #00c080;
+    color: #EEE;
+}
+
+.TitlePreviewer__action-download:hover {
+    background: #007D55;
+    color: #FFF;
+}
+
 .TextPreview__container {
     height: 100%;
     margin: 1em;
