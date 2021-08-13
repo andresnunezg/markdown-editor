@@ -4,10 +4,40 @@
 
 .TitleEditor__left,
 .TitleEditor__right,
-.TitleEditor__action,
-.TitleEditor__action {
+.TitleEditor__action-copy,
+.TitleEditor__action-clear {
     display: flex;
     align-items: center;
+}
+
+.TitleEditor__action-copy,
+.TitleEditor__action-clear {
+    border-style: none;
+    height: 100%;
+    margin-left: 1em;
+    padding: 0.5em;
+    border-radius: 5px;
+    transition: 200ms ease;
+}
+
+.TitleEditor__action-copy {
+    background-color: #DDF2FF;
+    color: #00A2F0;
+}
+
+.TitleEditor__action-clear {
+    background-color: #EEE;
+    color: #FF372A;
+}
+
+.TitleEditor__action-copy:hover {
+    background-color: #B1EFFB;
+    color: #0080CD;
+}
+
+.TitleEditor__action-clear:hover {
+    background-color: #DDD;
+    color: #ED0034;
 }
 
 .Textedit__container {
@@ -31,20 +61,18 @@
 }
 
 .Icontool {
-    width: 2em;
+    border-style: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.3em;
+    height: 2.3em;
     padding: 0.4em;
     text-align: center;
     border-radius: 5px;
     transition: 200ms ease;
     color: #555;
-}
-
-.IconBold {
-    font-weight: 600;
-}
-
-.IconItalic {
-    font-style: italic;
 }
 
 .Icontool:hover {

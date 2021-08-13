@@ -17,11 +17,83 @@ class App extends React.Component {
       textMarkdown: e.target.value,
     })
   }
+  handleClick = (e) => {
+    switch (e.target.id) {
+      case "clear" :
+        if (this.state.textMarkdown === initialContent) {
+          this.setState({
+            textMarkdown: '',
+          });
+        }
+        break;
+      case "copy" :
+        navigator.clipboard.writeText(this.state.textMarkdown);
+        break;
+      case "heading" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '#\n',
+        });
+        break;
+      case "bold" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '** **\n',
+        });
+        break;
+      case "italic" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '_ _\n',
+        });
+        break;
+      case "cross" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '~~ ~~\n',
+        });
+        break;
+      case "in-code" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '`your code`\n',
+        });
+        break;
+      case "mu-code" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '```language\nyour code\n```\n',
+        });
+        break;
+      case "link" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '[link](https://github.com/AndresNunezG)\n',
+        });
+        break;
+      case "table" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + 'A | B | C\n---|---|---\nD | E | F\n',
+        });
+        break;
+      case "quote" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '> \n',
+        });
+        break;
+      case "list" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '- \n',
+        });
+        break;
+      case "image" :
+        this.setState({
+          textMarkdown: this.state.textMarkdown + '![Markdown Logo](https://freesvg.org/img/gs_markdown_black.png)\n',
+        });
+        break;
+      default:
+        break;
+    }
+  }
   render () {
     return (
       <div className="App">
         <div className="Main__container">
           <Editor
+           handleClick={this.handleClick}
            handleChangeEditor={this.handleChangeEditor}
            textMarkdown={this.state.textMarkdown}
           />
