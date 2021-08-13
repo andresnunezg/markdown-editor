@@ -38,7 +38,7 @@ class Editor extends React.Component {
                             <i id="cross" className="fas fa-strikethrough"></i>
                         </button>
                         <button onClick={this.props.handleClick} id="in-code" type="button" className="Icontool">
-                            <i id="in-code" class="fas fa-terminal"></i>
+                            <i id="in-code" className="fas fa-terminal"></i>
                         </button>
                         <button onClick={this.props.handleClick} id="mu-code" type="button" className="Icontool">
                             <i id="mu-code" className="fas fa-code"></i>

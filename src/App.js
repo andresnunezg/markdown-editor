@@ -1,10 +1,12 @@
 import React from 'react'
 
 import { initialContent } from './data';
+import Header from './components/Header';
 import Editor from './components/Editor';
 import Previewer from './components/Previewer';
 
 import './App.css';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -91,6 +93,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
+        <Header />
         <div className="Main__container">
           <Editor
            handleClick={this.handleClick}
