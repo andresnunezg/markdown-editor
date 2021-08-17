@@ -11,6 +11,9 @@ class Previewer extends React.Component {
             {__html: rawMD}
         );
     }
+    download = (e) => {
+        e.preventDefault();
+    }
     render () {
         return (
             <section id="previewer">

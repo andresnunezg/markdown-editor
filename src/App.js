@@ -4,6 +4,7 @@ import { initialContent } from './data';
 import Header from './components/Header';
 import Editor from './components/Editor';
 import Previewer from './components/Previewer';
+import ClearModal from './components/ClearModal';
 
 import './App.css';
 
@@ -12,12 +13,24 @@ class App extends React.Component {
     super(props);
     this.state = {
       textMarkdown: initialContent,
+      modalOpen: false,
     };
   }
   handleChangeEditor = (e) => {
     this.setState({
       textMarkdown: e.target.value,
     })
+  }
+  handleModal = (e) => {
+    if (this.state.modalOpen) {
+      this.setState({
+        modalOpen: false,
+      })
+    } else {
+      this.setState({
+        modalOpen: true,
+      })
+    }
   }
   handleClick = (e) => {
     switch (e.target.id) {
@@ -26,6 +39,10 @@ class App extends React.Component {
           this.setState({
             textMarkdown: '',
           });
+        } else {
+          this.setState({
+            modalOpen: true
+          })
         }
         break;
       case "copy" :
@@ -102,6 +119,7 @@ class App extends React.Component {
           />
           <Previewer textMarkdown={this.state.textMarkdown} />
         </div>
+        <ClearModal modalOpen={this.state.modalOpen} handleModal={this.handleModal} />
       </div>
     )
   };
