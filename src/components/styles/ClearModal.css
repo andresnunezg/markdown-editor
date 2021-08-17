@@ -1,0 +1,38 @@
+.ClearModal__text {
+    margin: 0.5em;
+}
+
+.ClearModal__buttons,
+.ClearModal__text {
+    display: flex;
+    justify-content: center;
+}
+
+.ClearModal__Cancel,
+.ClearModal__Clear {
+    border-radius: 5px;
+    padding: 5px;
+    width: 5em;
+    margin: 0.5em;
+    transition: 200ms ease;
+}
+
+.ClearModal__Cancel {
+    background-color: #DDF2FF;
+    color: #00A2F0;
+}
+
+.ClearModal__Cancel:hover {
+    background-color: #B1EFFB;
+    color: #0080CD;
+}
+
+.ClearModal__Clear {
+    background-color: #EEE;
+    color: #FF372A;
+}
+
+.ClearModal__Clear:hover {
+    background-color: #DDD;
+    color: #ED0034;
+}

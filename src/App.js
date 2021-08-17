@@ -32,10 +32,16 @@ class App extends React.Component {
       })
     }
   }
+  handleClear = (e) => {
+    this.setState({
+      textMarkdown: '',
+      modalOpen: false,
+    })
+  }
   handleClick = (e) => {
     switch (e.target.id) {
       case "clear" :
-        if (this.state.textMarkdown === initialContent) {
+        if ((this.state.textMarkdown === initialContent) || (this.state.textMarkdown === '')) {
           this.setState({
             textMarkdown: '',
           });
@@ -119,7 +125,7 @@ class App extends React.Component {
           />
           <Previewer textMarkdown={this.state.textMarkdown} />
         </div>
-        <ClearModal modalOpen={this.state.modalOpen} handleModal={this.handleModal} />
+        <ClearModal modalOpen={this.state.modalOpen} handleModal={this.handleModal} handleClear={this.handleClear} />
       </div>
     )
   };

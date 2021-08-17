@@ -9,7 +9,7 @@ const Modal = (props) => {
     return (
         <div className="Modal__container">
             <div className="Modal">
-                <button onClick={props.handleModal}>
+                <button className="Modal__Button CloseModal__button" onClick={props.handleModal}>
                     <i id="CloseModal" className="CloseModal fas fa-times"></i>
                 </button>
                 {props.children}
