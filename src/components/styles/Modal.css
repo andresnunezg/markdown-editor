@@ -35,6 +35,11 @@
     to {top:0; opacity: 1;}
 }
 
+.CloseModal__button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .Modal__Button {
     border-style: none;
     background: none;

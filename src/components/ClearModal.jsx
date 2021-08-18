@@ -4,7 +4,7 @@ import Modal from './Modal';
 
 import './styles/ClearModal.css'
 
-const ClearModal = (props) => {
+export default function ClearModal (props) {
     return (
         <Modal modalOpen={props.modalOpen} handleModal={props.handleModal}>
             <p className="ClearModal__text">¿Estás seguro de borrar el contenido del editor?</p>
@@ -15,5 +15,3 @@ const ClearModal = (props) => {
         </Modal>
     )
 }
-
-export default ClearModal;

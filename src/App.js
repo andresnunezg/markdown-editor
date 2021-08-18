@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Editor from './components/Editor';
 import Previewer from './components/Previewer';
 import ClearModal from './components/ClearModal';
+import DownloadedModal from './components/DownloadedModal';
 
 import './App.css';
 
@@ -13,9 +14,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       textMarkdown: initialContent,
-      modalOpen: false,
+      modalDownloadOpen: false,
+      modalClearOpen: false,
       fileDownloadUrl: '',
-      clickDoDownload: false
+      clickDoDownload: false,
     };
   }
   handleChangeEditor = (e) => {
@@ -23,21 +25,18 @@ class App extends React.Component {
       textMarkdown: e.target.value,
     })
   }
-  handleModal = (e) => {
-    if (this.state.modalOpen) {
-      this.setState({
-        modalOpen: false,
-      })
-    } else {
-      this.setState({
-        modalOpen: true,
-      })
-    }
+  handleClearModal = () => {
+    if (this.state.modalClearOpen) {this.setState({modalClearOpen: false})} 
+    else {this.setState({modalClearOpen: true})}
   }
-  handleClear = (e) => {
+  handleDownloadModal = () => {
+    if (this.state.modalDownloadOpen) {this.setState({modalDownloadOpen: false})} 
+    else {this.setState({modalDownloadOpen: true})}
+  }
+  handleClear = () => {
     this.setState({
       textMarkdown: '',
-      modalOpen: false,
+      modalClearOpen: false,
     })
   }
   handleClick = (e) => {
@@ -50,7 +49,7 @@ class App extends React.Component {
           });
         } else {
           this.setState({
-            modalOpen: true
+            modalClearOpen: true
           })
         }
         break;
@@ -113,12 +112,16 @@ class App extends React.Component {
         });
         break;
       case "download" :
+        console.log("hola")
         this.setState({clickDoDownload: true})
         if (this.state.fileDownloadUrl !== '') window.URL.revokeObjectURL(this.state.fileDownloadUrl);
         const blob = new Blob([this.state.textMarkdown], {type: 'text/plain'});
         const fileDownloadUrl  = window.URL.createObjectURL(blob);
         this.setState({fileDownloadUrl: fileDownloadUrl});
-        this.setState({clickDoDownload: false});
+        console.log(this.state.fileDownloadUrl)
+        setTimeout(() => {
+          this.setState({clickDoDownload: false, fileDownloadUrl: '', modalDownloadOpen: true})
+        }, 300);
         break;
       default:
         break;
@@ -142,9 +145,13 @@ class App extends React.Component {
           />
         </div>
         <ClearModal
-         modalOpen={this.state.modalOpen}
-         handleModal={this.handleModal}
+         modalOpen={this.state.modalClearOpen}
+         handleModal={this.handleClearModal}
          handleClear={this.handleClear}
+        />
+        <DownloadedModal 
+         modalOpen={this.state.modalDownloadOpen}
+         handleModal={this.handleDownloadModal}
         />
       </div>
     )
