@@ -6,7 +6,7 @@ class Header extends React.Component {
     render () {
         return (
             <header id="header">
-                <div className="Title__container">
+                <div className="Title__container-header">
                     <h1 className="Header__title-1">Live&nbsp;</h1>
                     <h1 className="Header__title-2">Markdown Editor</h1>
                 </div>
@@ -16,7 +16,7 @@ class Header extends React.Component {
                      target="_blank" rel="noreferrer"
                      className="Header__link"
                     >
-                    Ayuda
+                    Ayuda&nbsp;
                     </a>
                     <a
                      href="https://github.com/AndresNunezG/markdown-editor"

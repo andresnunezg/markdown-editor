@@ -34,3 +34,12 @@
 .Icon__title {
   width: 25px;
 }
+
+@media (max-width: 750px) {
+  .Main__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+  }
+}
