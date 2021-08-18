@@ -11,8 +11,12 @@ class Previewer extends React.Component {
             {__html: rawMD}
         );
     }
-    download = (e) => {
-        e.preventDefault();
+    componentDidUpdate(prevProps) {
+        if (this.props.clickDoDownload !== prevProps.clickDoDownload) {
+            if (this.props.clickDoDownload) {
+              this.downloadElement.click();
+            }
+        }
     }
     render () {
         return (
@@ -27,6 +31,12 @@ class Previewer extends React.Component {
                             Descargar&nbsp;
                             <i className="fas fa-download"></i>
                         </button>
+                        <a
+                         ref={e => this.downloadElement = e}
+                         href={this.props.hrefDownload}
+                         download="live-editor-markdown.md"
+                         className="HiddenLink">
+                        </a>
                     </div>
                 </div>
                 <div className="TextPreview__container" dangerouslySetInnerHTML={this.markdownConvert()} />

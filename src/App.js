@@ -14,6 +14,8 @@ class App extends React.Component {
     this.state = {
       textMarkdown: initialContent,
       modalOpen: false,
+      fileDownloadUrl: '',
+      clickDoDownload: false
     };
   }
   handleChangeEditor = (e) => {
@@ -39,6 +41,7 @@ class App extends React.Component {
     })
   }
   handleClick = (e) => {
+    e.preventDefault();
     switch (e.target.id) {
       case "clear" :
         if ((this.state.textMarkdown === initialContent) || (this.state.textMarkdown === '')) {
@@ -56,27 +59,27 @@ class App extends React.Component {
         break;
       case "heading" :
         this.setState({
-          textMarkdown: this.state.textMarkdown + '#\n',
+          textMarkdown: this.state.textMarkdown + '#  ',
         });
         break;
       case "bold" :
         this.setState({
-          textMarkdown: this.state.textMarkdown + '** **\n',
+          textMarkdown: this.state.textMarkdown + '** **  ',
         });
         break;
       case "italic" :
         this.setState({
-          textMarkdown: this.state.textMarkdown + '_ _\n',
+          textMarkdown: this.state.textMarkdown + '_ _  \n',
         });
         break;
       case "cross" :
         this.setState({
-          textMarkdown: this.state.textMarkdown + '~~ ~~\n',
+          textMarkdown: this.state.textMarkdown + '~~ ~~  \n',
         });
         break;
       case "in-code" :
         this.setState({
-          textMarkdown: this.state.textMarkdown + '`your code`\n',
+          textMarkdown: this.state.textMarkdown + '`your code`  \n',
         });
         break;
       case "mu-code" :
@@ -109,6 +112,14 @@ class App extends React.Component {
           textMarkdown: this.state.textMarkdown + '![Markdown Logo](https://freesvg.org/img/gs_markdown_black.png)\n',
         });
         break;
+      case "download" :
+        this.setState({clickDoDownload: true})
+        if (this.state.fileDownloadUrl !== '') window.URL.revokeObjectURL(this.state.fileDownloadUrl);
+        const blob = new Blob([this.state.textMarkdown], {type: 'text/plain'});
+        const fileDownloadUrl  = window.URL.createObjectURL(blob);
+        this.setState({fileDownloadUrl: fileDownloadUrl});
+        this.setState({clickDoDownload: false});
+        break;
       default:
         break;
     }
@@ -123,9 +134,18 @@ class App extends React.Component {
            handleChangeEditor={this.handleChangeEditor}
            textMarkdown={this.state.textMarkdown}
           />
-          <Previewer textMarkdown={this.state.textMarkdown} />
+          <Previewer
+           handleClick={this.handleClick}
+           clickDoDownload={this.state.clickDoDownload}
+           hrefDownload={this.state.fileDownloadUrl}
+           textMarkdown={this.state.textMarkdown}
+          />
         </div>
-        <ClearModal modalOpen={this.state.modalOpen} handleModal={this.handleModal} handleClear={this.handleClear} />
+        <ClearModal
+         modalOpen={this.state.modalOpen}
+         handleModal={this.handleModal}
+         handleClear={this.handleClear}
+        />
       </div>
     )
   };
